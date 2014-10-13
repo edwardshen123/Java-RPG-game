@@ -1,0 +1,19 @@
+public class Warrior extends Novice {
+    
+    //instance variable
+    private int stamina = 10;
+
+    //constructors
+    public Warrior(Novice user) {
+    }
+
+    //methods
+    public void levelUp() {
+	super.super.levelUp();
+	stamina++;
+    }
+    public void warriorConstitution() {
+    }
+    public void hackNbash() {
+    }
+}
