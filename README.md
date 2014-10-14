@@ -1,4 +1,4 @@
-Java-RPG-game
+JavaGames
 =============
 
-First text-based java dungeon crawling rpg game
+A Bundle of games created with simple Java codes
