@@ -1,4 +1,5 @@
 public class Encounter {
+    private int tick = 0;
     public void slimeEncounter(Novice user) {
 	System.out.println("You have encountered a slime");
 	Slime slime = new Slime();
@@ -17,6 +18,7 @@ public class Encounter {
 		System.out.println("Game Over");
 		break;
 	    }
+	    tick++;
 	}
     }
 }
