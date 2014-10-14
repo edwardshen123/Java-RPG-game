@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Driver {
+public class Jiablo {
     public static void main(String[] args) {
 	Scanner user_input = new Scanner(System.in);
 

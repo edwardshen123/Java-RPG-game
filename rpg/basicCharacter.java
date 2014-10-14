@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class basicCharacter {
 
     //instance variables
@@ -14,6 +16,7 @@ public class basicCharacter {
     private int strength = 5;
     private int intelligence = 5;
     private int precision = 5;
+    private Random randInt = new Random();
     
     //constructors
     public basicCharacter() {
@@ -73,8 +76,9 @@ public class basicCharacter {
 	return statArray;
     }
     public int attack(basicCharacter other, int modifier) {
-	other.health -= baseAttk + modifier + strength;
-	return baseAttk + modifier + strength;
+	int multiplier = randInt.nextInt(3);
+	other.health -= (baseAttk + strength) * multiplier + modifier;
+	return (baseAttk + strength) * multiplier + modifier;
     }
     public void gainExp(int gExp) {
 	experience += gExp;
