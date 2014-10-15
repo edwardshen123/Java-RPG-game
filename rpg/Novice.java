@@ -15,6 +15,7 @@ public class Novice extends basicCharacter {
     //methods
     //overload methods
     public void levelUp() {
+	//if level is not at cap, then it can level
 	if (getLevel() + 1 <= levelCap) {
 	    super.levelUp();
 	}
