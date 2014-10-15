@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class basicCharacter {
 
-    //instance variables
+    //instance variables (character stats)
     private String characterName;
     private int maxHealth = 10;
     private int health = 10;
@@ -16,16 +16,28 @@ public class basicCharacter {
     private int strength = 5;
     private int intelligence = 5;
     private int precision = 5;
+
+    //For mobs only
     private int provideExperience = 0;
+
+    //random instance object
     private Random randInt = new Random();
+
+
     
     //constructors
+
+    //base constructor
     public basicCharacter() {
 	characterName = "guest";
     }
+
+    //initial constructor
     public basicCharacter(String initName) {
 	characterName = initName;
     }
+
+    //Promotion constructor
     public basicCharacter(String initName, int[] userStat) {
 	characterName = initName;
 	level = userStat[0];
@@ -40,6 +52,8 @@ public class basicCharacter {
 	agility = userStat[9];
 	precision = userStat[10];
     }
+
+    //Mob or GM constructor
     public basicCharacter(String initName, int initLevel, int initGold, int initAttk, int initHealth, int initIntelligence, int initStrength, int initAgility, int initDefense, int initPrecision, int initMaxHealth, int initPExperience) {
 	characterName = initName;
 	level = initLevel;
@@ -56,7 +70,11 @@ public class basicCharacter {
 	provideExperience = initPExperience;
     }
 
+
+
     //methods
+
+    //set methods
     public void setStat(int[] stats) {
 	level = stats[0];
 	levelExperience = stats[1];
@@ -70,6 +88,8 @@ public class basicCharacter {
 	agility = stats[9];
 	precision = stats[10];
     }
+
+    //get methods
     public int getGold() {
 	return gold;
     }
@@ -78,9 +98,6 @@ public class basicCharacter {
     }
     public int getHealth() {
 	return health;
-    }
-    public void buffHealth(int buff) {
-	health+=buff;
     }
     public int getLevel() {
 	return level;
@@ -92,10 +109,10 @@ public class basicCharacter {
 	int[] statArray = {level, levelExperience, health, maxHealth, gold, baseAttk, strength, defense, intelligence, agility, precision};
 	return statArray;
     }
-    public int attack(basicCharacter other, int modifier) {
-	int multiplier = randInt.nextInt(3);
-	other.health -= (baseAttk + strength) * multiplier + modifier;
-	return (baseAttk + strength) * multiplier + modifier;
+
+    //Modifier methods
+    public void buffHealth(int buff) {
+	health+=buff;
     }
     public void gainExp(int gExp) {
 	experience += gExp;
@@ -111,9 +128,20 @@ public class basicCharacter {
 	    levelExperience = levelExperience * (int)Math.pow(2, level);
 	}
     }
+
+    //Action methods (Skills)
+    public int attack(basicCharacter other, int modifier) {
+	int multiplier = randInt.nextInt(3);
+	other.health -= (baseAttk + strength) * multiplier + modifier;
+	return (baseAttk + strength) * multiplier + modifier;
+    }
+
+    //Qualifier methods
     public boolean isDead() {
 	return (health <= 0);
     }
+
+    //toString
     public String toString() {
 	return characterName;
     }

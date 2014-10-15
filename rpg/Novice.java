@@ -1,22 +1,31 @@
 public class Novice extends basicCharacter {
 
-    //instance variables
+    //Limiter
     private int levelCap = 10;
+
+
 
     //constructors
     public Novice(String initName) {
 	super(initName);
     }
 
+
+
     //methods
+    //overload methods
     public void levelUp() {
-	if (getLevel() + 1 <= 10) {
+	if (getLevel() + 1 <= levelCap) {
 	    super.levelUp();
 	}
     }
+
+    //Qualifier methods
     public boolean promoChecker() {
-	return (getLevel() == 10);
+	return (getLevel() == levelCap);
     }
+
+    //action methods(skills)
     public void noviceConstitution() {
 	buffHealth(20);
     }
