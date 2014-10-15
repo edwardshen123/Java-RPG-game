@@ -19,8 +19,8 @@ public class Encounter {
 	    }
 	    if (slime.isDead()) {
 		System.out.println("You have vanquished the slime");
-		System.out.println("You gained " + slime.getExp() + " experience and " + slime.getGold() + " gold!");
-		user.gainExp(slime.getExp());
+		System.out.println("You gained " + slime.getPExp() + " experience and " + slime.getGold() + " gold!");
+		user.gainExp(slime.getPExp());
 		user.gainGold(slime.getGold());
 		break;
 	    }

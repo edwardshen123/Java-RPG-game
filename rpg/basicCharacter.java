@@ -16,6 +16,7 @@ public class basicCharacter {
     private int strength = 5;
     private int intelligence = 5;
     private int precision = 5;
+    private int provideExperience = 0;
     private Random randInt = new Random();
     
     //constructors
@@ -39,7 +40,7 @@ public class basicCharacter {
 	agility = userStat[9];
 	precision = userStat[10];
     }
-    public basicCharacter(String initName, int initLevel, int initGold, int initAttk, int initHealth, int initIntelligence, int initStrength, int initAgility, int initDefense, int initPrecision, int initMaxHealth, int initExperience) {
+    public basicCharacter(String initName, int initLevel, int initGold, int initAttk, int initHealth, int initIntelligence, int initStrength, int initAgility, int initDefense, int initPrecision, int initMaxHealth, int initPExperience) {
 	characterName = initName;
 	level = initLevel;
 	gold = initGold;
@@ -52,10 +53,23 @@ public class basicCharacter {
 	defense = initDefense;
 	precision = initPrecision;
 	maxHealth = initMaxHealth;
-	experience = initExperience;
+	provideExperience = initPExperience;
     }
 
     //methods
+    public void setStat(int[] stats) {
+	level = stats[0];
+	levelExperience = stats[1];
+	health = stats[2];
+	maxHealth = stats[3];
+	gold = stats[4];
+	baseAttk = stats[5];
+	strength = stats[6];
+	defense = stats[7];
+	intelligence = stats[8];
+	agility = stats[9];
+	precision = stats[10];
+    }
     public int getGold() {
 	return gold;
     }
@@ -70,6 +84,9 @@ public class basicCharacter {
     }
     public int getLevel() {
 	return level;
+    }
+    public int getPExp() {
+	return provideExperience;
     }
     public int[] getStat() {
 	int[] statArray = {level, levelExperience, health, maxHealth, gold, baseAttk, strength, defense, intelligence, agility, precision};
