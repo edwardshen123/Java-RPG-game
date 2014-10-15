@@ -1,0 +1,12 @@
+import java.awt.Canvas;
+
+public class Platformer extends Canvas implements Runnable{
+
+    //Thread
+    public void run() {
+    }
+
+    public static void main(String[] args) {
+	new Window(800, 600, "Platformer 0.1", new Platformer());
+    }
+}
