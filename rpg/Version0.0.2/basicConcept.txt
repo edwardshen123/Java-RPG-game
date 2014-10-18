@@ -1,0 +1,18 @@
+DnD Style:
+4 characters:
+warrior, priest, rogue, mage
+Can upgrade character
+only 4 skills per character
+skills carry over from new jobs
+can switch out skills
+
+With locations
+Purchase and sell only at city or town: have quests, can upgrade jobs
+Plains can have attack instance, no event instance, quest instance, treasure instance, super mob instance
+Dungeons have rooms: combat, treasure, trap, heal, no event, boss, mini boss
+
+Mobs
+can drop items, experience, gold.
+
+Inventory:
+Potions, Equipments, enchantments

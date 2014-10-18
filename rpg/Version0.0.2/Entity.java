@@ -16,14 +16,14 @@ public class Entity {
     
     //Constructs an entity with a name and a type of either playerCharacter or nonplayerCharacter
     public Entity(String givenName, String givenType) {
-	this(givenName, givenType, 1, {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
+	this(givenName, givenType, 1, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
     }
     public Entity(String givenName, String givenType, int givenLevel) {
-	this(givenName, givenType, givenLevel, {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
+	this(givenName, givenType, givenLevel, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
     }
     public Entity(String givenName, String givenType, int givenLevel, double[] givenStats) {
-	name = givenName;
-	type = givenType;
+	Name = givenName;
+	Type = givenType;
 	Level = givenLevel;
 	Health = givenStats[0];
 	maxHealth = givenStats[1];
@@ -36,7 +36,7 @@ public class Entity {
 
     //Setters and Getters
     public double[] getStats() {
-	double [] stats = {Health, maxHealth, Strength, Defense, Agility, Intelligence, Precision};
+	double[] stats = {Health, maxHealth, Strength, Defense, Agility, Intelligence, Precision};
 	return stats;
     }
     public void setStats(double[] givenStats) {
@@ -60,7 +60,7 @@ public class Entity {
     public void setHealth(double newHealth) {
 	Health = newHealth;
     }
-    public void getMaxHealth() {
+    public double getMaxHealth() {
 	return maxHealth;
     }
     public double getStrength() {

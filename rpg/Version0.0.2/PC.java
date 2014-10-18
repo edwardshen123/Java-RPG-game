@@ -28,10 +28,10 @@ public class PC extends Entity {
     private double intelligenceActiveBoost;
     private double precisionActiveBoost;
 
-    public PC(String givenName, String givenRace) {
+    public PC(String givenName, String givenRace, String givenJob) {
 	super(givenName, "PC");
 	Race = givenRace;
-	Job = "Beginner";
+	Job = givenJob;
     }
 
     public void printSkills() {
