@@ -1,6 +1,7 @@
 public class PC extends Entity {
 
     private int Exp;
+    private Skills entitySkills = new Skills(getLevel(), Race, Job);
 
     //Job Variables
     private String Job;
@@ -27,13 +28,10 @@ public class PC extends Entity {
     private double intelligenceActiveBoost;
     private double precisionActiveBoost;
 
-    private Skills entitySkills;
-
     public PC(String givenName, String givenRace, String givenJob) {
 	super(givenName, "PC");
 	Race = givenRace;
 	Job = givenJob;
-	entitySkills = new Skills(getLevel(), givenRace, givenJob);
     }
 
     public void printSkills() {

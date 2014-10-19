@@ -16,3 +16,42 @@ can drop items, experience, gold.
 
 Inventory:
 Potions, Equipments, enchantments
+
+Mobs:
+Zombies : misma breath (slow and weaken), bump (deal damage), zombie call: summon another zombie
+Security Statue: Crowd control (intimidation and damage), get out of here (skip move)
+Golem of 696: Grab, Toss
+Roaming Dean:
+Library Monitors: waiting line
+Compiler Error:
+SigFig:
+Anatomy Man:
+Pirañas:
+Units:
+Ghosts of the Dissected:
+Skeleton:
+
+
+
+Events:
+Hall rush: deal damage as a mob of people rushes through
+Free period: a break to use inv, heal, etc
+Escalator broke:
+Forbidden elevator:
+Mandatory workshop:
+Locked lockers:
+Early Dismissal:
+Procrastination:
+Rollerblade ride:
+
+Boss:
+(Teachers and staff member)
+MTA bot
+Macroy: 3 commandments (in the Long run, we are all dead, scarcity and choice)
+Akmehdov: The Sun,
+Wang: Concept,
+Konstantinovich: Mass SCV
+Coco: Summon Ladybird, Siege bombardment
+Ali: compression, dilation, inertial, C
+Stern: Proof, Sing, Absolute confusion
+DOE: Blizzard, heal block, extended time, pressure

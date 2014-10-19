@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Daemon {
+public class Stuyablo {
 
     public static void main(String[] args) {
 	
