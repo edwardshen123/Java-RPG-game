@@ -2,25 +2,7 @@ import java.util.Scanner;
 
 public class Stuyablo {
 
-    public void printOptions(String[] actionPossible) {
-	for (int counter = 0; counter < actionPossible.length; counter++) {
-	    System.out.print(actionPossible[counter] + "||");
-	}
-	System.out.print("\n");
-    }
-    public void Encounter() {
-    }
-    public void raceOptions() {
-	String[] Races = {};
-	for (int counter = 0; counter < Races.length, counter++) {
-	    System.out.print(Races[counter] + " || ");
-	}
-	System.out.print("\n");
-    }
-
     public static void main(String[] args) {
-
-	Stuyablo controller = new Stuyablo();
 	
 	Scanner user_input = new Scanner(System.in);
 
@@ -52,13 +34,6 @@ public class Stuyablo {
 	PC priest = new PC(pName, pRace, "Priest");
 
 	System.out.println(warrior + ", " + mage + ", " + rogue + ", " + priest + ". You are all now registered as official adventurers. Good Luck");
-	
-	World Stuy = new World();
-
-	System.out.println("The four adventurers enter the town of " + Stuy.getLocation());
-
-	String[] actions = Stuy.actionOptions();
-	controller.printOptions(actions);
     }
 
 }
