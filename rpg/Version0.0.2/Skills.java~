@@ -16,11 +16,11 @@ public class Skills {
     //Common Methods
     public double criticalCalculator(Entity self) {
 	Random randDouble = new Random();
-	double criticalMultiplier = (self.getPrecision / 100.0) + (randDouble.nextDouble(.99) + .02);
+	double criticalMultiplier = (self.getPrecision() / 100.0) + randDouble.nextDouble();
 	return criticalMultiplier;
     }
     public void heal(Entity entity, double healing) {
-	healedHP = entity.getHealth + healing;
+	double healedHP = entity.getHealth() + healing;
 	if (healedHP < entity.getMaxHealth()) {
 	    entity.setHealth(healedHP);
 	} else {
@@ -30,9 +30,9 @@ public class Skills {
 
     //Skills
     public String wildSwing(Entity self, Entity other) {
-	double damage = 5.0 + (self.getStrength * 1.5);
+	double damage = 5.0 + (self.getStrength() * 1.5);
 	double totalDamage = damage * (1.0 + criticalCalculator(self));
-	other.setHealth(other.getHealth - totalDamage);
+	other.setHealth(other.getHealth() - totalDamage);
 	return (self + " took a wild swing at " + other + " for " + totalDamage + "damage");
     }
     public Boolean run(Entity self, Entity other) {
@@ -41,5 +41,6 @@ public class Skills {
 
     //Getters and Setters
     public String getSkillsList() {
+	return "";
     }
 }

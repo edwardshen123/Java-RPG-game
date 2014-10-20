@@ -9,9 +9,6 @@ public class PC extends Entity {
     private boolean isStealth;
     private int stealthTimer;
     private int Faith;
-
-    //Race Variables
-    private String Race;
     
     //Boost Variables
     private double healthPassiveBoost;
@@ -27,16 +24,30 @@ public class PC extends Entity {
     private double intelligenceActiveBoost;
     private double precisionActiveBoost;
 
-    private Skills entitySkills;
-
     public PC(String givenName, String givenRace, String givenJob) {
-	super(givenName, "PC");
-	Race = givenRace;
+	super(givenName, givenRace);
 	Job = givenJob;
-	entitySkills = new Skills(getLevel(), givenRace, givenJob);
     }
 
-    public void printSkills() {
-	System.out.println(entitySkills.getSkillsList());
+    public int getExp() {
+	return Exp;
+    }
+    public String getJob() {
+	return Job;
+    }
+    public int[] getEnergyValues() {
+	int[] energies = {Stamina, Mana, stealthTimer, Faith};
+	return energies;
+    }
+    public boolean isStealth() {
+	return isStealth;
+    }
+    public double[] getPassiveBoosts() {
+	double[] passives = {healthPassiveBoost, strengthPassiveBoost, defensePassiveBoost, agilityPassiveBoost, intelligencePassiveBoost, precisionPassiveBoost};
+	return passives;
+    }
+    public double[] getActiveBoosts() {
+	double[] actives = {healthActiveBoost, strengthActiveBoost, defenseActiveBoost, agilityActiveBoost, intelligenceActiveBoost, precisionActiveBoost};
+	return actives;
     }
 }

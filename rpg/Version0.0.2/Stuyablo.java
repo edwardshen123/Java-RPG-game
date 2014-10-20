@@ -3,13 +3,34 @@ import java.util.Arrays;
 
 public class Stuyablo {
 
+    public Boolean run(PC[] playerList, NPC[] mobs) {
+	return (self.getAgility() > other.getAgility());
+    }
     public void printOptions(String[] actionPossible) {
 	for (int counter = 0; counter < actionPossible.length; counter++) {
 	    System.out.print(actionPossible[counter] + " || ");
 	}
 	System.out.print("\n");
     }
-    public void Encounter() {
+    public void Encounter(PC[] playerList, Scanner user_input) {
+	NPC zombie = new NPC("zombie");
+	while (true) {
+	    for (int p = 0; p < 4; p++) {
+		Skills playerSkills = new Skills(playerList[p]);
+		System.out.println("It's " + playerList[p] + "\'s turn");
+		String[] skillsList = playerSkills.getSkillsList();
+		for (int s = 1; s < skillsList.length + 1; s++) {
+		    System.out.print(skillsList[s - 1]);
+		    System.out.print(" || ");
+		    if (s%5 == 0) {
+			System.out.println();
+		    }
+		}
+		System.out.print("Enter a move: ");
+		skill = "";
+		skillInput(skill, skillsList, user_input);
+	    }
+	}
     }
     public void raceOptions() {
 	String[] Races = {"Human", "Elf", "Giant", "Half-Elf"};
@@ -27,6 +48,13 @@ public class Stuyablo {
 	    System.out.println("No Such Move");
 		}
     }
+    public void skillInput(String skill, String[] skillList, Scanner user_input) {
+	skill = user_input.next();
+	while (!Arrays.asList(skillList).contains(skill)) {
+	    System.out.print("You have entered an invalid skill. Please enter another skill: ");
+	    skill = user_input.next();
+	}
+    }
     public void raceInput(String race, Scanner user_input) {
 	String[] Races = {"Human", "Elf", "Giant", "Half-Elf"};
 	race = user_input.next();
@@ -34,6 +62,9 @@ public class Stuyablo {
 	    System.out.print("You have entered an invalid race. Please enter another race: ");
 	    race = user_input.next();
 	}
+    }
+    public void AI(NPC mob) {
+	Skills npcSkills = new Skills(mob.toString());
     }
 
     public static void main(String[] args) {

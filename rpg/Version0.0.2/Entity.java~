@@ -1,10 +1,9 @@
 public class Entity {
 
-    //Entity Characteristics
+    //Entity name
     private String Name;
-    private String Race;
-    //Entity Counters
-    private int[] coolDown = {0, 0, 0, 0};
+    //Entity type classification (player or non-player)
+    private String Type;
     //Entity Stats
     private int Level;
     private double Health;
@@ -16,15 +15,15 @@ public class Entity {
     private double Precision;
     
     //Constructs an entity with a name and a type of either playerCharacter or nonplayerCharacter
-    public Entity(String givenName, String givenRace) {
-	this(givenName, givenRace, 1, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
+    public Entity(String givenName, String givenType) {
+	this(givenName, givenType, 1, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
     }
-    public Entity(String givenName, String givenRace, int givenLevel) {
-	this(givenName, givenRace, givenLevel, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
+    public Entity(String givenName, String givenType, int givenLevel) {
+	this(givenName, givenType, givenLevel, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
     }
-    public Entity(String givenName, String givenRace, int givenLevel, double[] givenStats) {
+    public Entity(String givenName, String givenType, int givenLevel, double[] givenStats) {
 	Name = givenName;
-	Race = givenRace;
+	Type = givenType;
 	Level = givenLevel;
 	Health = givenStats[0];
 	maxHealth = givenStats[1];
@@ -48,15 +47,6 @@ public class Entity {
 	Agility = givenStats[4];
 	Intelligence = givenStats[5];
 	Precision = givenStats[6];
-    }
-    public String getRace() {
-	return Race;
-    }
-    public int[] getCoolDown() {
-	return coolDown;
-    }
-    public void setCoolDown(int location, int value) {
-	coolDown[location] = value;
     }
     public int getLevel() {
 	return Level;
