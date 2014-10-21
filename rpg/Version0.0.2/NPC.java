@@ -5,4 +5,8 @@ public class NPC extends Entity {
     public NPC(String givenName) {
 	super(givenName, givenName);
     }
+    
+    public int getKillExp() {
+	return killExp;
+    }
 }

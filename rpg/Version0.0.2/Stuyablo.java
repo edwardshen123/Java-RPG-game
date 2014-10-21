@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Stuyablo {
 
@@ -12,8 +13,14 @@ public class Stuyablo {
 	}
 	System.out.print("\n");
     }
-    public void Encounter(PC[] playerList, Scanner user_input) {
-	NPC zombie = new NPC("zombie");
+    public void Encounter(PC[] playerList, Scanner user_input, int mobCount) {
+	NPC[] Mobs = new NPC[mobCount];
+	for (int c = 0; c < mobCount; c++) {
+	    Random randInt = new Random();
+	    String[] mobList = {"zombie");
+	    Mobs[c] = mobList[randInt.nextInt(mobList.length)];
+	}
+	int[] playerExp = {0, 0, 0, 0};
 	while (true) {
 	    for (int p = 0; p < 4; p++) {
 		Skills playerSkills = new Skills(playerList[p]);
@@ -29,7 +36,21 @@ public class Stuyablo {
 		System.out.print("Enter a move: ");
 		skill = "";
 		skillInput(skill, skillsList, user_input);
+		if (skill.equals("wildSwing")) {
+		    playerSkills.wildSwing(playerList[p], zombie);
+		    if (zombie.getHealth() <= 0.0) {
+			playerExp[p] = zombie.getKillExp();
+		    }
+		}
 	    }
+	    if (zombie.getHealth() <= 0.0) {
+		break;
+	    }
+	}
+	if 
+	for (int e = 0; e < 4; e++) {
+	    playerList[e].setExp(playerList[e].getExp() + playerExp[e]);
+	    System.out.println(playerList[e] + " gained " + playerExp[e] + " experiences");
 	}
     }
     public void raceOptions() {

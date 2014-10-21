@@ -50,4 +50,7 @@ public class PC extends Entity {
 	double[] actives = {healthActiveBoost, strengthActiveBoost, defenseActiveBoost, agilityActiveBoost, intelligenceActiveBoost, precisionActiveBoost};
 	return actives;
     }
+    public void setExp(int moarExp) {
+	Exp = moarExp;
+    }
 }
