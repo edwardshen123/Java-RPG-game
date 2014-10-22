@@ -38,12 +38,12 @@ public class Stuyablo {
 		skillInput(skill, skillsList, user_input);
 		if (skill.equals("wildSwing")) {
 		    playerSkills.wildSwing(playerList[p], zombie);
-		    if (zombie.getHealth() <= 0.0) {
+		    if (Mobs.getHealth() <= 0.0) {
 			playerExp[p] = zombie.getKillExp();
 		    }
 		}
 	    }
-	    if (zombie.getHealth() <= 0.0) {
+	    if (Mobs.getHealth() <= 0.0) {
 		break;
 	    }
 	}
