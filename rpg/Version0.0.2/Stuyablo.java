@@ -13,12 +13,34 @@ public class Stuyablo {
 	}
 	System.out.print("\n");
     }
+    public boolean deathChecker(NPC[] Mobs) {
+	int length = Mobs.length;
+	int healthSum = 0;
+	for (int c = 0; c < length; c++) {
+	    healthSum+=Mobs[c].getHealth();
+	}
+	return (healthSum <= 0);
+    }
+    public boolean deathChecker(PC[] Players) {
+	int length = Players.length;
+	int healthSum = 0;
+	for (int c = 0; c < length; c++) {
+	    healthSum+=Players[c].getHealth();
+	}
+	return (healthSum <= 0);
+    }
+    public void gainExp(int[] playerExp) {
+    }
     public void Encounter(PC[] playerList, Scanner user_input, int mobCount) {
 	NPC[] Mobs = new NPC[mobCount];
+	int[] mobsHealth = new int[mobCount];
+	boolean battleEnd = false;
 	for (int c = 0; c < mobCount; c++) {
 	    Random randInt = new Random();
 	    String[] mobList = {"zombie");
-	    Mobs[c] = mobList[randInt.nextInt(mobList.length)];
+	    int mobSelector = randInt.nextInt(mobList.length);
+	    Mobs[c] = mobList[mobSelector];
+	    
 	}
 	int[] playerExp = {0, 0, 0, 0};
 	while (true) {
@@ -37,13 +59,14 @@ public class Stuyablo {
 		skill = "";
 		skillInput(skill, skillsList, user_input);
 		if (skill.equals("wildSwing")) {
-		    playerSkills.wildSwing(playerList[p], zombie);
+		    playerSkills.wildSwing(playerList[p], Mobs);
 		    if (zombie.getHealth() <= 0.0) {
-			playerExp[p] = zombie.getKillExp();
+			playerExp[p] = Mobs.getKillExp();
 		    }
 		}
 	    }
-	    if (zombie.getHealth() <= 0.0) {
+	    if (deathChecker(Mobs)) {
+		System.out.println("Your Party Won!");
 		break;
 	    }
 	}
