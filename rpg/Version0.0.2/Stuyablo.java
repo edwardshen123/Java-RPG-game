@@ -59,6 +59,7 @@ public class Stuyablo {
 		skill = "";
 		skillInput(skill, skillsList, user_input);
 		if (skill.equals("wildSwing")) {
+<<<<<<< HEAD
 		    playerSkills.wildSwing(playerList[p], Mobs);
 		    if (zombie.getHealth() <= 0.0) {
 			playerExp[p] = Mobs.getKillExp();
@@ -67,6 +68,15 @@ public class Stuyablo {
 	    }
 	    if (deathChecker(Mobs)) {
 		System.out.println("Your Party Won!");
+=======
+		    playerSkills.wildSwing(playerList[p], zombie);
+		    if (Mobs.getHealth() <= 0.0) {
+			playerExp[p] = zombie.getKillExp();
+		    }
+		}
+	    }
+	    if (Mobs.getHealth() <= 0.0) {
+>>>>>>> a7f35411eda15f2a7de015191902454743388d87
 		break;
 	    }
 	}
