@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class World {
     
     private String currentLocation;
@@ -29,13 +31,18 @@ public class World {
     }
     public String move(String nextLocation) {
 	currentLocation = nextLocation;
+	if (Arrays.asList(locationTowns).contains(nextLocation)) {
+	    isTown = true;
+	} else {
+	    isTown = false;
+	}
 	return ("You have traveled to " + currentLocation);
     }
     public String[] actionOptions() {
 	if (isTown) {
-	    return (new String[] {"Changing Room", "Locker", "Nurse\'s Office", "Exit Area"});
+	    return (new String[] {"Changing Room", "Locker", "Nurse\'s Office", "Area"});
 	} else {
-	    return (new String[] {"Search", "Camp", "Exit Area"});
+	    return (new String[] {"Battle", "Search", "Camp", "Area"});
 	}
     }
 }

@@ -5,7 +5,17 @@ import java.util.Random;
 public class Stuyablo {
 
     public Boolean run(PC[] playerList, NPC[] mobs) {
-	return (self.getAgility() > other.getAgility());
+	double playerAgility = 0;
+	for (int p = 0; p < playerList.length; p++) {
+	    playerAgility += playerList[p].getAgility();
+	}
+	double avgPlayerAgility = playerAgility/playerList.length;
+	double npcAgility = 0;
+	for (int m = 0; m < mobs.length; m++) {
+	    npcAgility += mobs[m].getAgility();
+	}
+	double avgNPCAgility = npcAgility/mobs.length;
+	return (avgPlayerAgility > avgNPCAgility);
     }
     public void printOptions(String[] actionPossible) {
 	for (int counter = 0; counter < actionPossible.length; counter++) {
@@ -34,6 +44,7 @@ public class Stuyablo {
 	    playerList[p].setExp(playerList[p].getExp() + playerExp[p]);
 	    System.out.println(playerList[p] + " gained " + playerExp[p] + " experience!");
 	}
+    }
     public void Encounter(PC[] playerList, Scanner user_input, int mobCount) {
 	NPC[] Mobs = new NPC[mobCount];
 	int[] mobsHealth = new int[mobCount];
@@ -41,9 +52,9 @@ public class Stuyablo {
 	int[] playerExp = {0, 0, 0, 0};
 	for (int c = 0; c < mobCount; c++) {
 	    Random randInt = new Random();
-	    String[] mobList = {"zombie");
+	    String[] mobList = {"zombie"};
 	    int mobSelector = randInt.nextInt(mobList.length);
-	    Mobs[c] = mobList[mobSelector];
+	    Mobs[c] = new NPC(mobList[mobSelector]);
 	    
 	}
 	while (true) {
@@ -63,10 +74,10 @@ public class Stuyablo {
 		skillInput(skill, skillsList, user_input);
 		if (Arrays.asList(attackSkills).contains(skill)) {
 		    if (skill.equals("wildSwing")) {
-			playerSkills.wildSwing(playerList[p], Mobs);
+			playerSkills.wildSwing(playerList[p], Mobs[p]);
 		    }
-		    if (Mobs.isDead()) {
-		        playerExp[p] = Mobs.getKillExp();
+		    if (Mobs[p].isDead()) {
+		        playerExp[p] = Mobs[p].getKillExp();
 		    }
 		} else {
 		    if (skill.equals("run")) {
@@ -78,6 +89,7 @@ public class Stuyablo {
 		expAdder(playerList, playerExp);
 	        break;
 	    }
+	    AI(Mobs, playerList);
 	}
     }
     public void raceOptions() {
@@ -89,16 +101,20 @@ public class Stuyablo {
     }
     public void userMovement(String move, String[] moveOptions, World world) {
 	if (Arrays.asList(moveOptions).contains(move)) {
-	    if (move.equals("Exit Area")) {
+	    if (move.equals("Area")) {
 		System.out.println("Areas: ");
 	    }
-	    if (move.equals()) {
+	    if (move.equals("Changing Room")) {
 	    }
-	    if (move.equals()) {
+	    if (move.equals("Locker")) {
 	    }
-	    if (move.equals()) {
+	    if (move.equals("Nurse\'s Office")) {
 	    }
-	    if (move.equals()) {
+	    if (move.equals("Battle")) {
+	    }
+	    if (move.equals("Search")) {
+	    }
+	    if (move.equals("Camp")) {
 	    }
 	} else {
 	    System.out.println("No Such Move");
@@ -119,8 +135,12 @@ public class Stuyablo {
 	    race = user_input.next();
 	}
     }
-    public void AI(NPC mob) {
-	Skills npcSkills = new Skills(mob.toString());
+    public void AI(NPC[] mob, PC[] players) {
+	for (int n = 0; n < mob.length; n++) {
+	    Skills npcSkills = new Skills(mob[n]);
+	    String[] npcSkillsList = npcSkills.getSkillsList();
+	    
+	}
     }
     public void intro(PC[] playerList, Scanner user_input) {
 	System.out.println("Welcome to the land of Stuylandia, travelers");
@@ -128,41 +148,47 @@ public class Stuyablo {
 
 	System.out.print("Enter the warrior's name: ");
 	String wName = user_input.next();
-	controller.raceOptions();
+        raceOptions();
 	System.out.print("Enter the warrior's race: ");
 	String wRace = "";
-	controller.raceInput(wRace, user_input);
+        raceInput(wRace, user_input);
 	PC warrior = new PC(wName, wRace, "Warrior");
 	
         System.out.print("Enter the mage's name: ");
 	String mName = user_input.next();
-	controller.raceOptions();
+        raceOptions();
 	System.out.print("Enter the mage's race: ");
 	String mRace = "";
-	controller.raceInput(mRace, user_input);
+        raceInput(mRace, user_input);
 	PC mage = new PC(mName, mRace, "Mage");
 
 	System.out.print("Enter the rogue's name: ");
 	String rName = user_input.next();
-	controller.raceOptions();
+        raceOptions();
 	System.out.print("Enter the mage's race: ");
 	String rRace = "";
-	controller.raceInput(rRace, user_input);
+        raceInput(rRace, user_input);
 	PC rogue = new PC(rName, rRace, "Rogue");
 	
 	System.out.print("Enter the priest's name: ");
 	String pName = user_input.next();
-	controller.raceOptions();
+        raceOptions();
 	System.out.print("Enter the priest's race: ");
 	String pRace = "";
-	controller.raceInput(pRace, user_input);
+        raceInput(pRace, user_input);
 	PC priest = new PC(pName, pRace, "Priest");
+
+	playerList[0] = warrior;
+	playerList[1] = mage;
+	playerList[2] = rogue;
+	playerList[3] = priest;
 
 	flush();
 
 	System.out.println(warrior + ", " + mage + ", " + rogue + ", " + priest + ". You are all now registered as official adventurers. Good Luck");
     }
     public void flush() {
+	System.out.print("\033[2J");
     }
     public static void main(String[] args) {
 	Stuyablo controller = new Stuyablo();
@@ -170,9 +196,9 @@ public class Stuyablo {
 	controller.flush();
 	
 	Scanner user_input = new Scanner(System.in);
-
 	PC[] playerList = new PC[4];
-	controller.intro(PC[] playerList, Scanner user_input);
+
+	controller.intro(playerList, user_input);
 	
 	World Stuy = new World();
 

@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Skills {
-
+    //Use Map
     private int Level;
     private String Race;
     private String Job;
@@ -37,12 +37,18 @@ public class Skills {
 	double damage = 5.0 + (self.getStrength() * 1.5);
 	double totalDamage = damage * (1.0 + criticalCalculator(self));
 	other.setHealth(other.getHealth() - totalDamage);
-	return (self + " took a wild swing at " + other + " for " + totalDamage + "damage");
+	return (self + " took a wild swing at " + other + " for " + totalDamage + " damage");
     }
 
+    public String miasmicBreath(Entity self, Entity other) {
+	double damage = 4.0;
+	double totalDamage = damage * (1.0 + criticalCalculator(self));
+	other.setHealth(other.getHealth() - totalDamage);
+	return (self + " exhale miasma; " + other + " took " + totalDamage + " damage");
+    }
     //Getters and Setters
     public String[] getSkillsList() {
-	String[] skillsList;
+	String[] skillsList = {""};
 	return skillsList;
     }
 }

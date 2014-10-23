@@ -5,11 +5,15 @@ public class Skills {
     private int Level;
     private String Race;
     private String Job;
+
+    public Skills(NPC mob) {
+	Race = mob.getRace();
+    }
     
-    public Skills(int givenLevel, String givenRace, String givenJob) {
-	Level = givenLevel;
-	Race = givenRace;
-	Job = givenJob;
+    public Skills(PC player) {
+	Level = player.getLevel();
+	Race = player.getRace();
+	Job = player.getJob();
     }
 
 
@@ -35,12 +39,10 @@ public class Skills {
 	other.setHealth(other.getHealth() - totalDamage);
 	return (self + " took a wild swing at " + other + " for " + totalDamage + "damage");
     }
-    public Boolean run(Entity self, Entity other) {
-	return (self.getAgility() > other.getAgility());
-    }
 
     //Getters and Setters
-    public String getSkillsList() {
-	return "";
+    public String[] getSkillsList() {
+	String[] skillsList;
+	return skillsList;
     }
 }
