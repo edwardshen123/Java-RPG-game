@@ -13,12 +13,38 @@ public class Stuyablo {
 	}
 	System.out.print("\n");
     }
+    public boolean deathChecker(NPC[] Mobs) {
+	int length = Mobs.length;
+	int healthSum = 0;
+	for (int c = 0; c < length; c++) {
+	    healthSum+=Mobs[c].getHealth();
+	}
+	return (healthSum <= 0);
+    }
+    public boolean deathChecker(PC[] Players) {
+	int length = Players.length;
+	int healthSum = 0;
+	for (int c = 0; c < length; c++) {
+	    healthSum+=Players[c].getHealth();
+	}
+	return (healthSum <= 0);
+    }
+    public void expAdder(PC[] playerList, int[] playerExp) {
+	for (int p = 0; p < playerList.length; p++) {
+	    playerList[p].setExp(playerList[p].getExp() + playerExp[p]);
+	    System.out.println(playerList[p] + " gained " + playerExp[p] + " experience!");
+	}
+    }
     public void Encounter(PC[] playerList, Scanner user_input, int mobCount) {
 	NPC[] Mobs = new NPC[mobCount];
+	int[] mobsHealth = new int[mobCount];
+	String[] attackSkills = {"wildSwing"};
 	for (int c = 0; c < mobCount; c++) {
 	    Random randInt = new Random();
 	    String[] mobList = {"zombie");
-	    Mobs[c] = mobList[randInt.nextInt(mobList.length)];
+	    int mobSelector = randInt.nextInt(mobList.length);
+	    Mobs[c] = mobList[mobSelector];
+	    
 	}
 	int[] playerExp = {0, 0, 0, 0};
 	while (true) {
@@ -34,23 +60,25 @@ public class Stuyablo {
 		    }
 		}
 		System.out.print("Enter a move: ");
-		skill = "";
+		String skill = "";
 		skillInput(skill, skillsList, user_input);
-		if (skill.equals("wildSwing")) {
-		    playerSkills.wildSwing(playerList[p], zombie);
-		    if (Mobs.getHealth() <= 0.0) {
-			playerExp[p] = zombie.getKillExp();
+		if (Arrays.asList(attackSkills).contains(skill)) {
+		    if (skill.equals("wildSwing")) {
+			playerSkills.wildSwing(playerList[p], Mobs);
+		    }
+		    if (Mobs.isDead()) {
+		        playerExp[p] = Mobs.getKillExp();
+		    }
+		} else {
+		    if (skill.equals("run")) {
 		    }
 		}
 	    }
-	    if (Mobs.getHealth() <= 0.0) {
+	    if (deathChecker(Mobs)) {
+		System.out.println("Your Party Won!");
+		expAdder(playerList, playerExp);
 		break;
 	    }
-	}
-	if 
-	for (int e = 0; e < 4; e++) {
-	    playerList[e].setExp(playerList[e].getExp() + playerExp[e]);
-	    System.out.println(playerList[e] + " gained " + playerExp[e] + " experiences");
 	}
     }
     public void raceOptions() {
@@ -63,11 +91,19 @@ public class Stuyablo {
     public void userMovement(String move, String[] moveOptions, World world) {
 	if (Arrays.asList(moveOptions).contains(move)) {
 	    if (move.equals("Exit Area")) {
-		    System.out.println("Areas: ");
-		}
+		System.out.println("Areas: ");
+	    }
+	    if (move.equals()) {
+	    }
+	    if (move.equals()) {
+	    }
+	    if (move.equals()) {
+	    }
+	    if (move.equals()) {
+	    }
 	} else {
 	    System.out.println("No Such Move");
-		}
+	}
     }
     public void skillInput(String skill, String[] skillList, Scanner user_input) {
 	skill = user_input.next();
@@ -87,15 +123,7 @@ public class Stuyablo {
     public void AI(NPC mob) {
 	Skills npcSkills = new Skills(mob.toString());
     }
-
-    public static void main(String[] args) {
-
-	System.out.flush();
-
-	Stuyablo controller = new Stuyablo();
-	
-	Scanner user_input = new Scanner(System.in);
-
+    public void intro(PC[] playerList, Stuyablo controller, Scanner user_input) {
 	System.out.println("Welcome to the land of Stuylandia, travelers");
 	System.out.println("Can I get your names?");
 
@@ -131,7 +159,21 @@ public class Stuyablo {
 	controller.raceInput(pRace, user_input);
 	PC priest = new PC(pName, pRace, "Priest");
 
+	controller.flush();
+
 	System.out.println(warrior + ", " + mage + ", " + rogue + ", " + priest + ". You are all now registered as official adventurers. Good Luck");
+    }
+    public void flush() {
+    }
+    public static void main(String[] args) {
+	Stuyablo controller = new Stuyablo();
+
+	controller.flush();
+	
+	Scanner user_input = new Scanner(System.in);
+
+	PC[] playerList = new PC[4];
+	controller.intro(PC[] playerList, Stuyablo controller ,Scanner user_input);
 	
 	World Stuy = new World();
 

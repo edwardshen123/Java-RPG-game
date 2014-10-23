@@ -1,8 +1,9 @@
-public class Entity {
+public abstract class Entity {
 
     //Entity Characteristics
     private String Name;
     private String Race;
+    private boolean isDead;
     //Entity Counters
     private int[] coolDown = {0, 0, 0, 0};
     //Entity Stats
@@ -17,14 +18,15 @@ public class Entity {
     
     //Constructs an entity with a name and a type of either playerCharacter or nonplayerCharacter
     public Entity(String givenName, String givenRace) {
-	this(givenName, givenRace, 1, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
+	this(givenName, givenRace, false, 1, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
     }
     public Entity(String givenName, String givenRace, int givenLevel) {
-	this(givenName, givenRace, givenLevel, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
+	this(givenName, givenRace, false, givenLevel, new double[] {100.0, 100.0, 2.0, 2.0, 2.0, 2.0, 2.0});
     }
-    public Entity(String givenName, String givenRace, int givenLevel, double[] givenStats) {
+    public Entity(String givenName, String givenRace, boolean givenIsDead, int givenLevel, double[] givenStats) {
 	Name = givenName;
 	Race = givenRace;
+	isDead = givenIsDead;
 	Level = givenLevel;
 	Health = givenStats[0];
 	maxHealth = givenStats[1];
@@ -52,6 +54,9 @@ public class Entity {
     public String getRace() {
 	return Race;
     }
+    public boolean isDead() {
+	return isDead;
+    }
     public int[] getCoolDown() {
 	return coolDown;
     }
@@ -69,6 +74,9 @@ public class Entity {
     }
     public void setHealth(double newHealth) {
 	Health = newHealth;
+	if (Health <= 0.0) {
+	    isDead = true;
+	}
     }
     public double getMaxHealth() {
 	return maxHealth;
