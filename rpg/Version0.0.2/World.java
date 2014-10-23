@@ -1,6 +1,14 @@
 import java.util.Arrays;
 
 public class World {
+
+    private static final Map<String, String[]> worldMap;
+    static
+    {
+	worldMap = new HashMap<String, String[]>();
+	worldMap.put("Freshyville", new String[] {"Eighth Floor Plain"});
+	worldMap.put("Eighth Floor Plain", new String[] {"Freshyville"});
+    }
     
     private String currentLocation;
     private Boolean isTown;
