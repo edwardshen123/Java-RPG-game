@@ -29,16 +29,24 @@ public class Stuyablo {
 	}
 	return (healthSum <= 0);
     }
+<<<<<<< HEAD
     public void expAdder(PC[] playerList, int[] playerExp) {
 	for (int p = 0; p < playerList.length; p++) {
 	    playerList[p].setExp(playerList[p].getExp() + playerExp[p]);
 	    System.out.println(playerList[p] + " gained " + playerExp[p] + " experience!");
 	}
+=======
+    public void gainExp(int[] playerExp) {
+>>>>>>> abaa16577d9bbf2d7ac16b70085afcc7526da89f
     }
     public void Encounter(PC[] playerList, Scanner user_input, int mobCount) {
 	NPC[] Mobs = new NPC[mobCount];
 	int[] mobsHealth = new int[mobCount];
+<<<<<<< HEAD
 	String[] attackSkills = {"wildSwing"};
+=======
+	boolean battleEnd = false;
+>>>>>>> abaa16577d9bbf2d7ac16b70085afcc7526da89f
 	for (int c = 0; c < mobCount; c++) {
 	    Random randInt = new Random();
 	    String[] mobList = {"zombie");
@@ -62,6 +70,7 @@ public class Stuyablo {
 		System.out.print("Enter a move: ");
 		String skill = "";
 		skillInput(skill, skillsList, user_input);
+<<<<<<< HEAD
 		if (Arrays.asList(attackSkills).contains(skill)) {
 		    if (skill.equals("wildSwing")) {
 			playerSkills.wildSwing(playerList[p], Mobs);
@@ -77,6 +86,27 @@ public class Stuyablo {
 	    if (deathChecker(Mobs)) {
 		System.out.println("Your Party Won!");
 		expAdder(playerList, playerExp);
+=======
+		if (skill.equals("wildSwing")) {
+<<<<<<< HEAD
+		    playerSkills.wildSwing(playerList[p], Mobs);
+		    if (zombie.getHealth() <= 0.0) {
+			playerExp[p] = Mobs.getKillExp();
+		    }
+		}
+	    }
+	    if (deathChecker(Mobs)) {
+		System.out.println("Your Party Won!");
+=======
+		    playerSkills.wildSwing(playerList[p], zombie);
+		    if (Mobs.getHealth() <= 0.0) {
+			playerExp[p] = zombie.getKillExp();
+		    }
+		}
+	    }
+	    if (Mobs.getHealth() <= 0.0) {
+>>>>>>> a7f35411eda15f2a7de015191902454743388d87
+>>>>>>> abaa16577d9bbf2d7ac16b70085afcc7526da89f
 		break;
 	    }
 	}
