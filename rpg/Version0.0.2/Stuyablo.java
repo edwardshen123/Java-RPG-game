@@ -94,6 +94,7 @@ public class Stuyablo {
     }
     public void raceOptions() {
 	String[] Races = {"Human", "Elf", "Giant", "Half-Elf"};
+	System.out.print("|| ");
 	for (int counter = 0; counter < Races.length; counter++) {
 	    System.out.print(Races[counter] + " || ");
 	}
