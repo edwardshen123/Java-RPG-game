@@ -105,27 +105,36 @@ public class Stuyablo {
     }
 
     //Movement In Town, Plains and Dungeon Method
-    public void userMovement(String move, String[] moveOptions, World world) {
+    public void userMovement(PC[] playerList, World world, Scanner user_input) {
+	String move = "";
+	String[] moveOptions = world.actionOptions();
+	Input(move, moveOptions, user_input, "movement");
 	if (Arrays.asList(moveOptions).contains(move)) {
 	    if (move.equals("Area")) {
 		System.out.println("Areas: ");
-		printOptions(world.getNextLocations());
-		
+		String nextLocation = "";
+		String[] nextLocations = world.getNextLocations();
+		printOptions(nextLocations);
+		Input(nextLocation, nextLocations, user_input, "map");
+		System.out.println(world.move(nextLocation));
 	    }
 	    if (move.equals("Changing Room")) {
+		System.out.println("Welcome to the Changing Room. You can purchase armour here");
 	    }
 	    if (move.equals("Locker")) {
+		System.out.println("Welcome to the Locker. You can purchase weapons here");
 	    }
 	    if (move.equals("Nurse\'s Office")) {
+		System.out.println("Welcome to the Nurse\'s Office. You can purchase potions here");
 	    }
 	    if (move.equals("Battle")) {
+		Random mobInt = new Random();
+		Encounter(playerList, user_input, mobInt.nextInt(4) + 1);
 	    }
 	    if (move.equals("Search")) {
 	    }
 	    if (move.equals("Camp")) {
 	    }
-	} else {
-	    System.out.println("No Such Move");
 	}
     }
 
@@ -142,6 +151,9 @@ public class Stuyablo {
 	    if (inputType.equals("race")) {
 		System.out.print("You have entered an invalid race. Please enter another race: ");
 	    }
+	    if (inputType.equals("movement")) {
+		System.out.print("You have entered an invalid movement. Please enter another race: ");
+	    }
 	    input = user_input.next();
 	}
     }
@@ -149,9 +161,14 @@ public class Stuyablo {
     //AI for mobs
     public void AI(NPC[] mob, PC[] players) {
 	for (int n = 0; n < mob.length; n++) {
-	    Skills npcSkills = new Skills(mob[n]);
-	    String[] npcSkillsList = npcSkills.getSkillsList();
+	    NPC ctrlMob = mob[n];
+	    //Choose the player to attack
 	    
+	    //Choose the attack
+	    Skills npcSkills = new Skills(ctrlMob);
+	    String[] npcSkillsList = npcSkills.getSkillsList();
+	    //Carry out the attack
+	    System.out.println(npcSkills.miasmicBreath(ctrlMob, players[n]));
 	}
     }
 
@@ -239,7 +256,7 @@ public class Stuyablo {
 
 	String[] options = Stuy.actionOptions();
 	controller.printOptions(options);
-	controller.userMovement(user_input.next(), options, Stuy);
+	controller.userMovement(playerList, Stuy, user_input);
     }
 
 }

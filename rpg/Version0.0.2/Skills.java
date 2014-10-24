@@ -1,7 +1,14 @@
 import java.util.Random;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Skills {
-    //Use Map
+    //Skill: attack, aoe, stun, heal, ult
+    //Skill: attack, attack, attack, attack, ult
+    private static final Map<String, String[]> npcSkillMap = new HashMap<String, String[]>();
+    static {
+	npcSkillMap.put("zombie", new String[] {"miasmicBreath"});
+    }
     private int Level;
     private String Race;
     private String Job;
