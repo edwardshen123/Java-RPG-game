@@ -2,13 +2,32 @@ import java.util.Random;
 import java.util.Map;
 import java.util.HashMap;
 
+//To put in unique methods into Map
+public interface Command {
+    void runCommand(Entity self, Entity other);
+    void runCommand(Entity self, Entity[] others);
+}
+
 public class Skills {
     //Skill: attack, aoe, stun, heal, ult
     //Skill: attack, attack, attack, attack, ult
-    private static final Map<String, String[]> npcSkillMap = new HashMap<String, String[]>();
+    private static final Map<String, Command[]> npcSkillRunMap = new HashMap<String, Command[]>();
     static {
-	npcSkillMap.put("zombie", new String[] {"miasmicBreath"});
+	npcSkillRunMap.put("zombie",
+			{new Command() {public void runCommand(Entity self, Entity other) {miasmicBreath(self, other)}}
+				}
+			);
     }
+
+    //Skill:Location:
+    private static final Map<String, String[]> npcSkillStatMap = new HashMap<String, String[]>();
+    static {
+	npcSkillStatMap.put("zombie",
+			    {"miasmicBreath:0:"
+			    }
+			    );
+    }
+
     private int Level;
     private String Race;
     private String Job;
