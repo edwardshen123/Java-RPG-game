@@ -1,8 +1,13 @@
+import java.util.Maps;
+import java.util.HashMap;
+
 public class NPC extends Entity {
 
-    private String[] npcList = {"zombie"};
-    private int[] expList = {0};
-    private int killExp;
+    private static final Map<String, int> npcExpMap = new HashMap<String, int>();
+    static
+    {
+	npcExpMap.put("zombie", 20);
+    }
     private int[] threat = {0, 0, 0, 0};
     
     public NPC(String givenName) {
@@ -19,6 +24,6 @@ public class NPC extends Entity {
 	threat[3] = d;
     }
     public int getKillExp() {
-	return killExp;
+	return npcExpMap.get(givenName);
     }
 }
