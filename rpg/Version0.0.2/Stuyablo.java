@@ -5,7 +5,7 @@ import java.util.Random;
 public class Stuyablo {
 
     //User combat run chance checker
-    public Boolean run(PC[] playerList, NPC[] mobs) {
+    public boolean run(PC[] playerList, NPC[] mobs) {
 	double playerAgility = 0;
 	for (int p = 0; p < playerList.length; p++) {
 	    playerAgility += playerList[p].getAgility();
@@ -166,7 +166,7 @@ public class Stuyablo {
 	    
 	    //Choose the attack
 	    Skills npcSkills = new Skills(ctrlMob);
-	    String[] npcSkillsList = npcSkills.getSkillsList();
+
 	    //Carry out the attack
 	    System.out.println(npcSkills.miasmicBreath(ctrlMob, players[n]));
 	}

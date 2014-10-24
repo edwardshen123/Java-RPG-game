@@ -28,6 +28,11 @@ public class Skills {
 			    );
     }
 
+    private static final Map<String, Command> playerSkillRunMap = new HashMap<String, Command>();
+    static {
+	playerSkillRunMap.put("wildSwing", public void runCommand(Entity self, Entity other) {wildSwing(self, other)});
+    }
+
     private int Level;
     private String Race;
     private String Job;
