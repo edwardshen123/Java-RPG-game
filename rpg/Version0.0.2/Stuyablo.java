@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.Array;
 import java.util.Random;
 
 public class Stuyablo {
@@ -159,17 +159,19 @@ public class Stuyablo {
     }
 
     //AI for mobs
-    public void AI(NPC[] mob, PC[] players) {
-	for (int n = 0; n < mob.length; n++) {
-	    NPC ctrlMob = mob[n];
-	    //Choose the player to attack
-	    
-	    //Choose the attack
-	    Skills npcSkills = new Skills(ctrlMob);
-
-	    //Carry out the attack
-	    System.out.println(npcSkills.miasmicBreath(ctrlMob, players[n]));
+    public void AI(NPC mob, PC[] players) {
+	//Choose the player to attack
+	int[] potential = new int[players.length];
+	for (int pCounter = 0; pCounter < players.length; pCounter++) {
+	    potential[pCounter] = players[pCounter].getThreat();
 	}
+	int selectPlayer;
+
+	//Choose the attack
+	Skills npcSkills = new Skills(ctrlMob);
+
+	//Carry out the attack
+	System.out.println(npcSkills.miasmicBreath(ctrlMob, players[n]));
     }
 
     //Introduction Screen Method
